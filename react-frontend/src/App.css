@@ -1,0 +1,198 @@
+:root{
+  --bg:#e9eef5; --card:#ffffff; --text:#111827; --text-muted:#4b5563;
+  --primary:#2563eb; --primary-2:#1e40af; --border:#e5e7eb;
+  --success-bg:#e8f5e9; --success-accent:#2e7d32;
+  --error-bg:#ffebee; --error-accent:#d32f2f;
+  --shadow:0 10px 30px rgba(0,0,0,.12);
+}
+.dark{
+  --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --text-muted:#94a3b8;
+  --primary:#60a5fa; --primary-2:#3b82f6; --border:#1f2937;
+  --success-bg:#0b2a1a; --success-accent:#84cc16;
+  --error-bg:#2a0f13; --error-accent:#f87171;
+  --shadow:0 12px 35px rgba(0,0,0,.35);
+}
+
+html, body, #root { height: 100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background:
+    radial-gradient(50% 50% at 10% 0%, rgba(99,102,241,0.10) 0%, rgba(99,102,241,0) 60%),
+    radial-gradient(50% 50% at 100% 0%, rgba(20,184,166,0.10) 0%, rgba(20,184,166,0) 60%),
+    var(--bg);
+  color:var(--text);
+}
+
+/* center whole app and constrain width on desktop */
+#root{
+  display:flex; flex-direction:column; align-items:center; min-height:100vh;
+}
+
+/* Navbar */
+.navbar{
+  position:sticky; top:0; z-index:10; width:100%;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 28px; background:var(--card);
+  border-bottom:1px solid var(--border); box-shadow:var(--shadow);
+}
+.brand{display:flex; align-items:center; gap:10px; font-weight:800}
+.logo{
+  width:34px; height:34px; border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:#fff; display:grid; place-items:center; font-size:18px; box-shadow:var(--shadow);
+}
+.theme-toggle{
+  background:var(--card); color:var(--text); border:1px solid var(--border);
+  padding:8px 12px; border-radius:999px; cursor:pointer;
+}
+
+/* Page container (centers content and limits width) */
+.page{
+  width:100%;
+  max-width:960px;      /* container width on desktop */
+  margin:40px auto 60px;
+  padding:0 24px;       /* side padding for alignment */
+  display:grid; gap:28px;
+}
+
+/* Card (form wrapper) */
+.card{
+  width:100%; max-width:680px; margin:0 auto;  /* <- centers the card */
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; box-shadow:var(--shadow);
+  padding:28px 30px;
+}
+
+/* Typography */
+.h2{font-size:22px; font-weight:800; margin:0 0 6px 0}
+.subtle{color:var(--text-muted); font-size:14px; margin:0 0 16px}
+.meta{font-size:12px; color:var(--text-muted); margin-top:8px}
+.link{color:var(--primary); text-decoration:none}
+.link:hover{text-decoration:underline}
+
+/* Form grid */
+.form-grid{display:grid; gap:16px}
+.two-col{display:grid; gap:16px}
+@media (min-width:640px){ .two-col{ grid-template-columns:1fr 1fr } }
+
+label{font-weight:600; font-size:13px; color:var(--text-muted)}
+input, textarea, select{
+  width:100%; margin-top:6px; padding:11px 12px;
+  border:1.5px solid var(--border); border-radius:10px; background:transparent; color:var(--text);
+  outline:none; transition:border .2s ease, box-shadow .2s ease;
+}
+input:focus, textarea:focus, select:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(37,99,235,0.18);
+}
+textarea{min-height:110px; resize:vertical}
+input[type="file"]{padding:9px 10px; background:rgba(148,163,184,0.08); border-style:dashed}
+
+/* Button */
+.btn{
+  width:100%; padding:12px 16px; border:none; border-radius:12px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:#fff; font-weight:700; letter-spacing:.2px; cursor:pointer; margin-top:4px;
+  box-shadow:0 6px 16px rgba(37,99,235,.25);
+}
+.btn:hover{filter:brightness(1.06)}
+.btn:disabled{opacity:.6; cursor:not-allowed}
+
+/* Feedback boxes */
+.errors,.success-box{margin-top:14px; border-radius:12px; padding:12px 14px; border-left:4px solid}
+.errors{background:var(--error-bg); border-left-color:var(--error-accent); color:var(--error-accent)}
+.success-box{background:var(--success-bg); border-left-color:var(--success-accent); color:var(--success-accent)}
+
+/* Responsive polish */
+@media (min-width:768px){
+  .page{gap:36px; margin-top:60px}
+  .card{padding:36px 44px}
+}
+@media (min-width:1024px){
+  .card{max-width:720px}
+}
+/* === Center alignment fix === */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* keeps navbar visible */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px;     /* ✅ sets readable width */
+  margin: 60px auto;    /* ✅ centers horizontally */
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 36px 44px;
+}
+/* Hide Vite DevTools FAB + dock in dev */
+#vite-devtools-container,
+[data-vite-devtools],
+.__vite-devtools__,
+.__VITE_PLUGIN_REACTPAGES__,
+.__VITE_DEVTOOLS__ {
+  display: none !important;
+}
+/* ===== SAFE CENTERING + OVERFLOW FIX ===== */
+html, body, #root { height: 100%; width: 100%; margin: 0; padding: 0; }
+html, body { overflow-x: hidden; } /* kill any horizontal scroll that can offset centering */
+
+/* Don't center the whole body; center the page content only */
+#root { display: block; }
+
+/* The page is a flex container that centers its child (.card) */
+.page {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;   /* change to center for vertical centering */
+  width: 100% !important;
+  min-height: calc(100vh - 72px);       /* ~ navbar height */
+  margin: 0 auto !important;
+  padding: 24px;
+}
+
+/* The form card width and true centering */
+.card {
+  width: 100% !important;
+  max-width: 720px !important;          /* readable width on desktop */
+  margin: 0 auto !important;            /* horizontal centering */
+  float: none !important;               /* in case any browser default interferes */
+}
+
+/* Inputs stretch, no funky float behavior */
+input, textarea, select { display: block; }
+
+/* ===== HIDE DEV OVERLAYS (Vite/Inspector/Devtools) ===== */
+#vite-devtools-container,
+[data-vite-devtools],
+.__vite-devtools__,
+.__VITE_DEVTOOLS__,
+#vite-plugin-inspect, 
+.vite-plugin-inspect-fab,
+[class*="vite-devtools"],
+[class*="vite__devtools"] {
+  display: none !important;
+  visibility: hidden !
+

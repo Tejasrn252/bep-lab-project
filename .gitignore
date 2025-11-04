@@ -1,0 +1,47 @@
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+.vite/
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+debug.log*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS generated files
+ehthumbs.db
+Icon?
+
+# Express uploads (ignore runtime uploaded files)
+/express-backend/uploads/
+
+# React frontend build artifacts
+/react-frontend/dist/
+/react-frontend/build/
+
+# Optional: ignore local package-lock if you prefer reproducible installs
+# package-lock.json
